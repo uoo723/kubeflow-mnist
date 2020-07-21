@@ -41,6 +41,17 @@ def train(data_dir: str):
     print(f'Test Loss: {test_loss}')
     print(f'Test Acc: {test_acc}')
 
+    metrics = {
+        'metrics': [{
+            'name': 'accuracy',
+            'numberValue': test_acc,
+            'format': 'PERCENTAGE',
+        }]
+    }
+
+    with open('/mlpipeline-metrics.json', 'w') as f:
+        json.dump(metrics, f)
+
     # Save model
     ts = calendar.timegm(time.gmtime())
     model_path = os.path.join(PROJECT_ROOT, f'mnist-{ts}.h5')
