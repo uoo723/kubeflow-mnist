@@ -45,7 +45,7 @@ def train(data_dir: str):
     metrics = {
         'metrics': [{
             'name': 'accuracy',
-            'numberValue': test_acc,
+            'numberValue': test_acc.item(),
             'format': 'PERCENTAGE',
         }]
     }
